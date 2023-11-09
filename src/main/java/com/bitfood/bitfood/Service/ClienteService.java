@@ -7,14 +7,16 @@ import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
-    public Cliente listarClientes(Long clienteId){
-        return clienteRepository.findById(clienteId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe el cliente con Id "+clienteId));
+    public List<Cliente> listarCliente(){
+        return clienteRepository.findAll();
     }
 
     public Cliente buscarClientePorContrasena(String clienteContrasena){

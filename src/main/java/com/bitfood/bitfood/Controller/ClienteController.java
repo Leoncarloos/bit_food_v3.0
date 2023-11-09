@@ -7,20 +7,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
     @Autowired
     private ClienteService clienteService;
-    @GetMapping ("/listar/{id}")
-    public ResponseEntity<Cliente> listarClientes(@PathVariable(value = "id") Long clienteId){
-        return new ResponseEntity<Cliente>(clienteService.listarClientes(clienteId),HttpStatus.OK);
+    @GetMapping("/listar")
+    public ResponseEntity<List<Cliente>> listarCliente(){
+        return new ResponseEntity<List<Cliente>>(clienteService.listarCliente(), HttpStatus.OK);
     }
     @GetMapping("/buscar/{contrasena}")
     public ResponseEntity<Cliente> buscarClientePorContrasena(@PathVariable (value="contrasena")String clienteContrasena){
         return new ResponseEntity<Cliente>(clienteService.buscarClientePorContrasena(clienteContrasena),HttpStatus.OK);
     }
+
     @PostMapping("/insertar")
     public ResponseEntity<Cliente> insertarCliente(@RequestBody Cliente cliente){
         return new ResponseEntity<Cliente>(clienteService.insertarCliente(cliente),HttpStatus.CREATED);

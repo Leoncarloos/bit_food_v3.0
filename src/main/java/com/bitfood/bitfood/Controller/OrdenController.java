@@ -33,10 +33,6 @@ public class OrdenController {
     public ResponseEntity<Orden> insertarOrden(@RequestBody OrdenDto ordenDetalles){
         return new ResponseEntity<Orden>(ordenService.insertarOrden(ordenDetalles),HttpStatus.CREATED);
     }
-    /*@PutMapping("/Actualizar/{id}")
-    public ResponseEntity<Orden> actualizarOrden (@PathVariable(value = "id") Long ordenId, @RequestBody Orden orden){
-        return new ResponseEntity<Orden>(ordenService.actualizarOrden(ordenId, orden),HttpStatus.OK);
-    }*/
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Orden> eliminarOrden (@PathVariable(value = "id") Long ordenId){
         return new ResponseEntity<Orden>(ordenService.eliminarOrden(ordenId),HttpStatus.OK);

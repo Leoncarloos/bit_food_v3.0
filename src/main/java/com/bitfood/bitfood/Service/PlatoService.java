@@ -6,14 +6,15 @@ import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlatoService {
     @Autowired
     PlatoRepository platoRepository;
 
-    public Plato listarPlatos(Long PlatoId){
-        return platoRepository.findById(PlatoId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe el plato con el Id "+PlatoId));
-
+    public List<Plato> listarPlato(){
+        return platoRepository.findAll();
     }
 
     public Plato insertarPlato (Plato platoDetalle){

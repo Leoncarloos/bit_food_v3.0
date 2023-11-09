@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/plato")
 public class PlatoController {
@@ -15,9 +17,9 @@ public class PlatoController {
     @Autowired
     private PlatoService platoService;
 
-    @GetMapping ("/listar/{id}")
-    private ResponseEntity<Plato> listarPlatos (@PathVariable (value = "id")Long platoId){
-        return new ResponseEntity<Plato>(platoService.listarPlatos(platoId), HttpStatus.OK);
+    @GetMapping("/listar")
+    public ResponseEntity<List<Plato>> listarPlato(){
+        return new ResponseEntity<List<Plato>>(platoService.listarPlato(), HttpStatus.OK);
     }
 
     @PostMapping("/insertar")
