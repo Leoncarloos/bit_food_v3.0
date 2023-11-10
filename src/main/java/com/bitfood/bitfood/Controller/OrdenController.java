@@ -24,7 +24,7 @@ public class OrdenController {
     public ResponseEntity<List<Orden>> buscarOrdenPorCliente(@PathVariable (value = "clienteId") Long clienteId){
         return new ResponseEntity<List<Orden>>(ordenService.buscarOrdenPorCliente(clienteId),HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<Orden> buscarOrdenPorId(@PathVariable(value = "id")Long ordenId){
         return new ResponseEntity<Orden>(ordenService.buscarOrdenPorId(ordenId),HttpStatus.OK);
     }

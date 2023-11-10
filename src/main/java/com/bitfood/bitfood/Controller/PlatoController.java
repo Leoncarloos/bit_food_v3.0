@@ -2,6 +2,7 @@ package com.bitfood.bitfood.Controller;
 
 
 import com.bitfood.bitfood.Model.Entities.Plato;
+import com.bitfood.bitfood.Model.Entities.Restaurante;
 import com.bitfood.bitfood.Service.PlatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,11 @@ public class PlatoController {
     @GetMapping("/listar")
     public ResponseEntity<List<Plato>> listarPlato(){
         return new ResponseEntity<List<Plato>>(platoService.listarPlato(), HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<Plato> listarPlatoPorId(@PathVariable (value = "id")Long platoId){
+        return new ResponseEntity<Plato>(platoService.listarPlatoPorId(platoId),HttpStatus.OK);
     }
 
     @PostMapping("/insertar")

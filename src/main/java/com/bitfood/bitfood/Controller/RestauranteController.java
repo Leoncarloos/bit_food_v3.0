@@ -24,7 +24,7 @@ public class RestauranteController {
         return new ResponseEntity<List<Restaurante>>(restauranteService.listarRestaurantes(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar/{id}")
     public ResponseEntity<Restaurante> listarRestaurantePorId(@PathVariable (value = "id")Long restauranteId){
         return new ResponseEntity<Restaurante>(restauranteService.listarRestaurantePorId(restauranteId),HttpStatus.OK);
     }

@@ -1,6 +1,7 @@
 package com.bitfood.bitfood.Service;
 
 import com.bitfood.bitfood.Model.Entities.Plato;
+import com.bitfood.bitfood.Model.Entities.Restaurante;
 import com.bitfood.bitfood.Repository.PlatoRepository;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class PlatoService {
     public List<Plato> listarPlato(){
         return platoRepository.findAll();
     }
+
+    public Plato listarPlatoPorId(Long platoId){return platoRepository.findById(platoId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe el restaurante con el Id "+platoId));}
 
     public Plato insertarPlato (Plato platoDetalle){
         return platoRepository.save(platoDetalle);

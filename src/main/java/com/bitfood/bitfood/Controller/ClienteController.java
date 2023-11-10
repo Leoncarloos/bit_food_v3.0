@@ -1,6 +1,7 @@
 package com.bitfood.bitfood.Controller;
 
 import com.bitfood.bitfood.Model.Entities.Cliente;
+import com.bitfood.bitfood.Model.Entities.Plato;
 import com.bitfood.bitfood.Service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,11 @@ public class ClienteController {
     @GetMapping("/listar")
     public ResponseEntity<List<Cliente>> listarCliente(){
         return new ResponseEntity<List<Cliente>>(clienteService.listarCliente(), HttpStatus.OK);
+    }
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<Cliente> listarPlatoPorId(@PathVariable (value = "id")Long clienteId){
+        return new ResponseEntity<Cliente>(clienteService.listarClientePorId(clienteId),HttpStatus.OK);
     }
     @GetMapping("/buscar/{contrasena}")
     public ResponseEntity<Cliente> buscarClientePorContrasena(@PathVariable (value="contrasena")String clienteContrasena){

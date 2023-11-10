@@ -1,6 +1,7 @@
 package com.bitfood.bitfood.Service;
 
 import com.bitfood.bitfood.Model.Entities.Cliente;
+import com.bitfood.bitfood.Model.Entities.Plato;
 import com.bitfood.bitfood.Repository.ClienteRepository;
 
 import org.springdoc.api.OpenApiResourceNotFoundException;
@@ -18,6 +19,8 @@ public class ClienteService {
     public List<Cliente> listarCliente(){
         return clienteRepository.findAll();
     }
+
+    public Cliente listarClientePorId(Long clienteId){return clienteRepository.findById(clienteId).orElseThrow(()->new OpenApiResourceNotFoundException("No existe el restaurante con el Id "+clienteId));}
 
     public Cliente buscarClientePorContrasena(String clienteContrasena){
         return clienteRepository.encontrarPorContrasena(clienteContrasena).orElseThrow(()->new OpenApiResourceNotFoundException("No existe cliente con esa contraseña "+clienteContrasena));
