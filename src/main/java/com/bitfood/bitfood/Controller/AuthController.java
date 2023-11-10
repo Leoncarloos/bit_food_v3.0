@@ -26,6 +26,10 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register (@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.register(request));
     }
+    @PostMapping("/auth/register2")
+    public ResponseEntity<AuthResponse> register2 (@RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(authService.register2(request));
+    }
     @GetMapping("/api/show")
     public ResponseEntity<String> showDemo () {
         return new ResponseEntity<>("Bienvenido de nuevo", HttpStatus.OK);
